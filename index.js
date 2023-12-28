@@ -4,6 +4,7 @@ let currentCell = 1
 let cells = [];
 let numColumns = 0;
 let rows = [];
+let dataObject = [];
 
 
 
@@ -15,11 +16,16 @@ for(let i = 0; i < csv.lengths; i++) {
     if (rows.length === 0) {
         //first row
         rows.push(cells.slice()); // copy cells to rows array
-        numColumns = cells.length;
+        numColumns = cells.length; 
     } else {
-        // other rows
-        rows.push(cells.slice());
+        const rowDataObject = {};
+        for (let j = 0; j < numColumns; j++) {
+            const heading = rows[0][j].toLowerCase();
+            rowDataObject[heading] = cells[j];
+        }
+        dataObject.push(rowDataObject);
     }
+
     console.log(cells.join(','));
     currentCell = 1;
     cells = [];
@@ -35,7 +41,7 @@ for(let i = 0; i < csv.lengths; i++) {
 }
 }
  console.log("number of columns:" , numColumns);
- console.log("rows:", rows);
+ console.log("Data Objects:" , dataObject);
 
 
 
