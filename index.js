@@ -3,6 +3,7 @@ let currentCell = 1
 // instead of inidividual variables for each cell, i used aarray "cells" to make the value
 let cells = [];
 let numColumns = 0;
+let rows = [];
 
 
 
@@ -11,15 +12,30 @@ for(let i = 0; i < csv.lengths; i++) {
         currentCell++;
 
 } else if (csv[i]=== "\n" || i === csv.length - 1) {
+    if (rows.length === 0) {
+        //first row
+        rows.push(cells.slice()); // copy cells to rows array
+        numColumns = cells.length;
+    } else {
+        // other rows
+        rows.push(cells.slice());
+    }
     console.log(cells.join(','));
     currentCell = 1;
-    cells = ['', '', '', '',];
+    cells = [];
 
 } else {
+    cells[currentCell - 1] = cells[currentCell -1] || '';
     cells[currentCell - 1] += csv[i];
-}
-}
 
-//part 2
+    //updating numcolumns if processing first row
+    if (currentCell > numColumns) {
+        numColumns = currentCell;
+    }
+}
+}
+ console.log("number of columns:" , numColumns);
+ console.log("rows:", rows);
+
 
 
