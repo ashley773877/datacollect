@@ -43,5 +43,18 @@ for(let i = 0; i < csv.lengths; i++) {
  console.log("number of columns:" , numColumns);
  console.log("Data Objects:" , dataObject);
 
+// part 4
+// remove last element from array
+dataObject.pop();
 
+//insert following object at index 1
+const newObjectAtIndex1 = { id: "48", name: "Barry", occupation: "Runner", age: "25" };
+dataObject.splice(1, 0, newObjectAtIndex1);
+
+// Add the object given to the end of the array
+const newObjectAtEnd = { id: "7", name: "Bilbo", occupation: "None", age: "111" };
+dataObject.push(newObjectAtEnd);
+
+// Logging the updated array
+console.log("Updated Data Objects:", dataObject);
 
