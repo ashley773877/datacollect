@@ -58,3 +58,14 @@ dataObject.push(newObjectAtEnd);
 // Logging the updated array
 console.log("Updated Data Objects:", dataObject);
 
+let totalAge = 0;
+
+for (let i = 0; i < dataObject.length; i++) {
+    
+    totalAge += parseInt(dataObject[i].age);
+}
+
+const averageAge = totalAge / dataObject.length;
+
+console.log("Average Age:", averageAge);
+
